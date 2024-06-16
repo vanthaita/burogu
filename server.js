@@ -21,7 +21,12 @@ app.use('/login', require('../backend/routes/login.route'));
 app.use('/refreshtoken', require('../backend/routes/refreshToken.route'));
 
 app.use(verifyJWT);
-
+app.use('/logout', require('../backend/routes/logout.route'));
+app.use('/profile', (req, res) => {
+    console.log(req);
+    console.log("-------------------\n",req.cookies);
+    res.status(200).send('Profile route accessed');
+});
 app.use('/u', require('../backend/routes/get.user.route'));
 
 app.listen(PORT, () => {

@@ -3,13 +3,12 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const handleRefreshToken = async (req, res) => {
-    // const cookies = req.cookies;
-    // if (!cookies?.jwt) return res.sendStatus(401);
-    // const refreshToken = cookies.jwt;
-
-    const authHeader = req.headers['authorization'] || req.headers['Authorization']
-    const refreshToken = authHeader && authHeader.split(' ')[1]
-    console.log('refresh token', refreshToken);
+    const cookies = req.cookies;
+    if (!cookies?.refreshtoken) return res.sendStatus(401);
+    const refreshToken = cookies.refreshtoken;
+    
+    // const authHeader = req.headers['authorization'] || req.headers['Authorization']
+    // const refreshToken = authHeader && authHeader.split(' ')[1]
     try {
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, async (err, data) => {
             if (err) return res.sendStatus(403); 

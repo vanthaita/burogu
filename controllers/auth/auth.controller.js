@@ -27,14 +27,14 @@ const handleLogin = async (req, res) => {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        const accessToken = jwt.sign({ email: foundUser.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+        const accessToken = jwt.sign({ email: foundUser.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
         const refreshToken = jwt.sign({ email: foundUser.email }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '1d' });
 
         await prisma.user.update({
             where: { email: email },
             data: { refresh_token: refreshToken }
         });
-
+        res.cookie('refreshToken', refreshToken, {httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000});
         return res.json({ accessToken });
     } catch (err) {
         console.log(err);

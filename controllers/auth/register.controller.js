@@ -28,7 +28,8 @@ const handleRegister = async (req, res) => {
             data: {
                 username: username,
                 email: email,
-                password: hashPassword
+                password: hashPassword,
+                refresh_token: '',
             }
         });
         return res.status(201).json({ message: 'User created successfully' });
