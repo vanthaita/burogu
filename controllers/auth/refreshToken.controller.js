@@ -4,8 +4,8 @@ const prisma = new PrismaClient();
 
 const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
-    if (!cookies?.refreshtoken) return res.sendStatus(401);
-    const refreshToken = cookies.refreshtoken;
+    if (!cookies?.Refresh_token) return res.sendStatus(401);
+    const refreshToken = cookies.Refresh_token;
     
     // const authHeader = req.headers['authorization'] || req.headers['Authorization']
     // const refreshToken = authHeader && authHeader.split(' ')[1]

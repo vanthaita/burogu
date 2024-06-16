@@ -14,9 +14,8 @@ const handleLogout = async (req, res) => {
             }
         });
         if (!user) {
-            return res.sendStatus(403); 
+            return res.status(403); 
         }
-
         await prisma.user.update({
             where: {
                 email: user.email
@@ -26,10 +25,8 @@ const handleLogout = async (req, res) => {
             }
         });
         console.log(user);
-
-        res.clearCookie('refreshToken', { httpOnly: true, secure: true, sameSite: 'Strict' });
-
-        res.sendStatus(200);
+        // res.clearCookie('refreshToken', { httpOnly: true, secure: true, sameSite: 'Strict' });
+        return res.status(200).json({message: "Logout successfully"});
     } catch (error) {
         console.error('Error logging out:', error);
         res.sendStatus(500); 

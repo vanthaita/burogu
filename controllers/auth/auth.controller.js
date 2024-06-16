@@ -14,7 +14,7 @@ const handleLogin = async (req, res) => {
 
     try {
         const foundUser = await prisma.user.findUnique({
-            where: { email: email }
+            where: { email: email },
         });
 
         if (!foundUser) {
@@ -34,8 +34,9 @@ const handleLogin = async (req, res) => {
             where: { email: email },
             data: { refresh_token: refreshToken }
         });
-        res.cookie('refreshToken', refreshToken, {httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000});
-        return res.json({ accessToken });
+        const { password: userPassword, refresh_token, ...userWithoutSensitiveInfo } = foundUser;
+        // res.cookie('refreshToken', refreshToken, {httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000});
+        return res.json({ accessToken, refreshToken, user: userWithoutSensitiveInfo });
     } catch (err) {
         console.log(err);
         return res.status(500).json({ message: 'Something went wrong' });
