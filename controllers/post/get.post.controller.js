@@ -21,7 +21,23 @@ const handleGetPost = async (req, res) => {
                         username: true,
                     },
                 },
-                comments: true,
+                comments: {
+                    select: {
+                        id: true,
+                        content: true,
+                        author: {
+                            select: {
+                                id: true,
+                                username: true,
+                            },
+                        },
+                        createdAt: true,
+                        updatedAt: true,
+                    },
+                    orderBy: {
+                        createdAt: 'asc',
+                    },
+                },
                 votes: true,
                 createdAt: true,
                 updatedAt: true,

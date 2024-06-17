@@ -16,8 +16,17 @@ const handleGetAllPost = async (req, res) => {
                         username: true,
                     },
                 },
+                comments: {
+                    select: {
+                        id: true
+                    }
+                },
+                votes: true,
                 createdAt: true,
                 updatedAt: true,
+            },
+            orderBy: {
+                createdAt: 'desc',
             }
         });
         return res.status(201).json({ message: 'Post created successfully' , posts});
