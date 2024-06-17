@@ -26,6 +26,8 @@ app.use('/logout', require('../backend/routes/logout.route'));
 // app.use(verifyJWT);
 app.use('/add-post', require('../backend/routes/post/add.post.route'));
 app.use('/add-comment', require('../backend/routes/comment/post.comment'));
+app.use('/vote', require('../backend/routes/vote/vote.route'));
+
 app.use('/u', require('../backend/routes/get.user.route'));
 
 app.listen(PORT, () => {
