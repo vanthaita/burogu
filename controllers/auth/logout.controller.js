@@ -7,6 +7,8 @@ const handleLogout = async (req, res) => {
     // const token = cookies.refreshtoken;
     
     const { email} = req.body;
+
+    console.log(email);
     try {
         const user = await prisma.user.findUnique({
             where: {

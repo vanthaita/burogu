@@ -1,14 +1,8 @@
 const jwt = require('jsonwebtoken');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
+const prisma = require('../../lib/db')
 const handleRefreshToken = async (req, res) => {
-    const cookies = req.cookies;
-    if (!cookies?.Refresh_token) return res.sendStatus(401);
-    const refreshToken = cookies.Refresh_token;
-    
-    // const authHeader = req.headers['authorization'] || req.headers['Authorization']
-    // const refreshToken = authHeader && authHeader.split(' ')[1]
+    const authHeader = req.headers['authorization'] || req.headers['Authorization']
+    const refreshToken = authHeader && authHeader.split(' ')[1]
     try {
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, async (err, data) => {
             if (err) return res.sendStatus(403); 

@@ -22,13 +22,14 @@ app.use('/refreshtoken', require('../backend/routes/refreshToken.route'));
 app.use('/get-all-post', require('../backend/routes/post/get.all.post.route'))
 app.use('/get-post', require('../backend/routes/post/get.post.route'))
 app.use('/logout', require('../backend/routes/logout.route'));
-
+app.use('/u/get-user', require('../backend/routes/get.user.route'));
 // app.use(verifyJWT);
+app.use('/follow', require('../backend/routes/user/follow.route'));
 app.use('/add-post', require('../backend/routes/post/add.post.route'));
 app.use('/add-comment', require('../backend/routes/comment/post.comment'));
 app.use('/vote', require('../backend/routes/vote/vote.route'));
 
-app.use('/u', require('../backend/routes/get.user.route'));
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
