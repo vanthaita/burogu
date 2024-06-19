@@ -12,7 +12,7 @@ const handleVote = async (req, res) => {
                 userId: userId
             }
         });
-
+        
         if(voteType === 1) {
             if (existingVote) {
                 return res.status(400).json({ message: 'You have already voted' });
