@@ -3,7 +3,7 @@ const prisma = require('../../../lib/db');
 const handleFollow = async (req, res) => {
     const { followerId, followingId, action } = req.body;
     // action {add, remove}
-
+    console.log(followerId, followingId, action);
     if (!followerId || !followingId || !action)  {
         return res.status(400).json({ message: 'Missing required fields' });
     }

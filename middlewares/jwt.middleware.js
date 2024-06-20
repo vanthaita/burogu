@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const verifyJWT = async (req, res, next) => {
     const cookies = req.cookies;
     let token;
-
+    console.log(cookies);
     if (cookies && cookies.token) {
         token = cookies.token;
     } else {
@@ -14,6 +14,7 @@ const verifyJWT = async (req, res, next) => {
             console.log("use header 'Authorization'")
         }
     }
+    console.log(token)
     if (!token) {
         return res.sendStatus(401); // Unauthorized
     }

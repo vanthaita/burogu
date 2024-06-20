@@ -3,7 +3,6 @@ const prisma = require('../../lib/db');
 const handleLogout = async (req, res) => {
     const cookies = req.cookies;
     let refresh_token;
-
     if (cookies && cookies.token) {
         refresh_token = cookies.refresh_token;
     } else {
@@ -16,7 +15,6 @@ const handleLogout = async (req, res) => {
     if (!refresh_token) {
         return res.sendStatus(401); // Unauthorized
     }
-    
     try {
         const user = await prisma.user.findUnique({
             where: {
