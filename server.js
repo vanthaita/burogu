@@ -16,6 +16,7 @@ app.use(cookieParser());
 
 
 
+
 app.use('/register', require('./routes/register.route'));
 app.use('/login', require('./routes/login.route'));
 
