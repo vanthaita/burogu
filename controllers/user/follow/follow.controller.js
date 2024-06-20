@@ -7,7 +7,6 @@ const handleFollow = async (req, res) => {
     if (!followerId || !followingId || !action)  {
         return res.status(400).json({ message: 'Missing required fields' });
     }
-    console.log(followerId, followingId ,action);
     try {
         const existingFollow = await prisma.follow.findFirst({
             where: {

@@ -4,7 +4,6 @@ const handleVote = async (req, res) => {
     if (!voteType || !postId || !userId) {
         return res.status(400).json({ message: 'Invalid vote' });
     }
-    console.log(voteType)
     try {
         const existingVote = await prisma.vote.findFirst({
             where: {

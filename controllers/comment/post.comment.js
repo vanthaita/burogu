@@ -1,5 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../../lib/db')
 
 const handlePostComment = async (req, res) => {
     const { authorId, postId, content } = req.body;
@@ -7,7 +6,6 @@ const handlePostComment = async (req, res) => {
     if (!authorId || !postId || !content) {
         return res.status(400).json({ message: 'Missing required fields' });
     }
-    console.log(authorId, postId, content);
     try {
         const existPost = await prisma.post.findUnique({
             where: {
@@ -61,7 +59,6 @@ const handlePostComment = async (req, res) => {
                 },
             },
         });
-        console.log(newComment);
         return res.status(201).json({ message: 'Comment created successfully', comment: newComment });
     } catch (err) {
         console.error(err);

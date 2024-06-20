@@ -1,13 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../../lib/db');
+
 require('dotenv').config();
 
 const handleAddPost = async (req, res) => {
     const { title, content, authorId, category } = req.body;
     try {
-        console.log("Adding")
         // const existPost = await prisma.post.findFirst({
         //     where: {
         //         title: title,

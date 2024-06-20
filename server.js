@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const corsOptions = require('../backend/config/cors.config');
-const verifyJWT = require('../backend/middlewares/jwt.middleware')
+const corsOptions = require('./config/cors.config');
+const verifyJWT = require('./middlewares/jwt.middleware')
 const app = express();
 const PORT = process.env.PORT || 8080
 
@@ -16,21 +16,20 @@ app.use(cookieParser());
 
 
 
-app.use('/register', require('../backend/routes/register.route'));
-app.use('/login', require('../backend/routes/login.route'));
+app.use('/register', require('./routes/register.route'));
+app.use('/login', require('./routes/login.route'));
 
-app.use('/get-all-post', require('../backend/routes/post/get.all.post.route'))
-app.use('/get-post', require('../backend/routes/post/get.post.route'))
-app.use('/u/get-user', require('../backend/routes/get.user.route'));
-app.use('/refreshtoken', require('../backend/routes/refreshToken.route'));
-app.use('/logout', require('../backend/routes/logout.route'));
+app.use('/get-all-post', require('./routes/post/get.all.post.route'))
+app.use('/get-post', require('./routes/post/get.post.route'))
+app.use('/u/get-user', require('./routes/get.user.route'));
+app.use('/refreshtoken', require('./routes/refreshToken.route'));
+app.use('/logout', require('./routes/logout.route'));
 app.use(verifyJWT);
 
-app.use('/follow', require('../backend/routes/user/follow.route'));
-app.use('/add-post', require('../backend/routes/post/add.post.route'));
-app.use('/add-comment', require('../backend/routes/comment/post.comment'));
-app.use('/vote', require('../backend/routes/vote/vote.route'));
-
+app.use('/follow', require('./routes/user/follow.route'));
+app.use('/add-post', require('./routes/post/add.post.route'));
+app.use('/add-comment', require('./routes/comment/post.comment'));
+app.use('/vote', require('./routes/vote/vote.route'));
 
 
 app.listen(PORT, () => {
