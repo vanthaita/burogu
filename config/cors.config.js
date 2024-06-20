@@ -1,6 +1,7 @@
 
 whilteList = [
     "http://localhost:3000",
+    "https://burogu-fontend.vercel.app",
     process.env.CLIENT_URL,
 ];
 
