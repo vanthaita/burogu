@@ -2,8 +2,20 @@ const prisma = require('../../lib/db');
 
 const handleLogout = async (req, res) => {
     const cookies = req.cookies;
-    if (!cookies?.refreshToken) return res.sendStatus(401);
-    const refresh_token = cookies.refreshToken;
+    let refresh_token;
+
+    if (cookies && cookies.token) {
+        refresh_token = cookies.refresh_token;
+    } else {
+        const authHeader = req.headers['authorization'] || req.headers['Authorization'];
+        if (authHeader) {
+            refresh_token = authHeader.split(' ')[1];
+            console.log("use header 'Authorization + Logout'")
+        }
+    }
+    if (!refresh_token) {
+        return res.sendStatus(401); // Unauthorized
+    }
     
     try {
         const user = await prisma.user.findUnique({
