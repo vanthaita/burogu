@@ -2,16 +2,20 @@ const jwt = require('jsonwebtoken');
 
 
 const verifyJWT = async (req, res, next) => {
-    // const authHeader = req.headers['authorization']
-    // const token = authHeader && authHeader.split(' ')[1]
     const cookies = req.cookies;
-    console.log('Cookie', cookies);
-    if (!cookies?.token) return res.sendStatus(401);
+    let token;
 
-    const token = cookies.token;
-
-    if(token == null) {
-        return res.sendStatus(401);
+    if (cookies && cookies.token) {
+        token = cookies.token;
+    } else {
+        const authHeader = req.headers['authorization'] || req.headers['Authorization'];
+        if (authHeader) {
+            token = authHeader.split(' ')[1];
+            console.log("use header 'Authorization'")
+        }
+    }
+    if (!token) {
+        return res.sendStatus(401); // Unauthorized
     }
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, data) => {

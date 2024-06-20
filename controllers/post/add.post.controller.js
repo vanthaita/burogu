@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const handleAddPost = async (req, res) => {
     const { title, content, authorId, category } = req.body;
+    console.log(title, content, authorId, category);
     try {
         // const existPost = await prisma.post.findFirst({
         //     where: {
