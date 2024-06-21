@@ -35,6 +35,11 @@ const handleGetPost = async (req, res) => {
                         createdAt: 'asc',
                     },
                 },
+                bookmarks: {
+                    select: {
+                        userId: true
+                    }
+                },
                 votes: true,
                 createdAt: true,
                 updatedAt: true,

@@ -31,6 +31,7 @@ app.use('/follow', require('./routes/user/follow.route'));
 app.use('/add-post', require('./routes/post/add.post.route'));
 app.use('/add-comment', require('./routes/comment/post.comment'));
 app.use('/vote', require('./routes/vote/vote.route'));
+app.use('/bookmark', require('./routes/post/add.bookmark.route'));
 
 
 app.listen(PORT, () => {

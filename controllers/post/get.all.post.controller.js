@@ -23,9 +23,15 @@ const handleGetAllPost = async (req, res) => {
                             id: true
                         }
                     },
+                    bookmarks: {
+                        select: {
+                            userId: true
+                        }
+                    },
                     votes: true,
                     createdAt: true,
                     updatedAt: true,
+
                 },
                 orderBy: {
                     votes: {
@@ -64,6 +70,11 @@ const handleGetAllPost = async (req, res) => {
                             id: true
                         }
                     },
+                    bookmarks: {
+                        select: {
+                            userId: true
+                        }
+                    },
                     votes: true,
                     createdAt: true,
                     updatedAt: true,
@@ -87,6 +98,11 @@ const handleGetAllPost = async (req, res) => {
                     comments: {
                         select: {
                             id: true
+                        }
+                    },
+                    bookmarks: {
+                        select: {
+                            userId: true
                         }
                     },
                     votes: true,

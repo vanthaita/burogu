@@ -1,9 +1,4 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const prisma = require('../../lib/db');
-
-require('dotenv').config();
-
 const handleAddPost = async (req, res) => {
     const { title, content, authorId, category } = req.body;
     console.log(title, content, authorId, category);
