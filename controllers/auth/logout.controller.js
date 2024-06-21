@@ -12,6 +12,7 @@ const handleLogout = async (req, res) => {
             console.log("use header 'Authorization + Logout'")
         }
     }
+    console.log(refresh_token);
     if (!refresh_token) {
         return res.sendStatus(401); // Unauthorized
     }
@@ -21,22 +22,23 @@ const handleLogout = async (req, res) => {
                 refresh_token: refresh_token,
             }
         });
+        console.log(user);
         if (!user) {
-            return res.status(403); 
+            return res.sendStatus(403); // Forbidden
         }
         await prisma.user.update({
             where: {
-                refresh_token: refresh_token
+                id: user.id
             },
             data: {
-                refresh_token: ' '
+                refresh_token: null 
             }
         });
-        // res.clearCookie('refreshToken', { httpOnly: true, secure: true, sameSite: 'Strict' });
+        // res.clearCookie('refresh_token', { httpOnly: true, secure: true, sameSite: 'Strict' });
         return res.status(200).json({message: "Logout successfully"});
     } catch (error) {
         console.error('Error logging out:', error);
-        res.sendStatus(500); 
+        return res.sendStatus(500); // Internal Server Error
     }
 };
 
