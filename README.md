@@ -20,7 +20,6 @@ Các thư mục và tệp chính trong dự án như sau:
 ![Sơ Đồ Cơ Sở Dữ Liệu](https://github.com/TaThasi/burogu/assets/120630656/9c4766db-d5fc-4d6a-b0f2-188410351c4a)
 
 ## Hướng Dẫn Cài Đặt
-Để cài đặt dịch vụ backend trên máy tính của bạn, làm theo các bước sau:
 
 ### Clone Repository:
 ```sh
