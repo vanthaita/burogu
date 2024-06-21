@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node": "14.x"
+    "node": "20.x"
   },
   "scripts": {
+    "vercel-build": "node ./build.js",
     "start": "node server.js",
     "dev": "nodemon server",
     "postinstall": "prisma generate"
