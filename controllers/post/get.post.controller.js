@@ -45,7 +45,7 @@ const handleGetPost = async (req, res) => {
                 updatedAt: true,
             }
         });
-        return res.status(201).json({ message: 'Post created successfully' , post});
+        return res.status(200).json({ message: 'Get post successfully' , post});
     } catch (err) {
         console.log(err);
         return res.status(500).json({ message: 'Something went wrong' });

@@ -115,7 +115,7 @@ const handleGetAllPost = async (req, res) => {
             });
         }
 
-        return res.status(201).json({ message: 'Post created successfully' , posts});
+        return res.status(200).json({ message: 'Get post successfully' , posts});
     } catch (err) {
         console.log(err);
         return res.status(500).json({ message: 'Something went wrong' });
