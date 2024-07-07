@@ -22,11 +22,11 @@ app.use('/login', require('./routes/login.route'));
 
 app.use('/get-all-post', require('./routes/post/get.all.post.route'))
 app.use('/get-post', require('./routes/post/get.post.route'))
-app.use('/u/get-user', require('./routes/get.user.route'));
+
 app.use('/refreshtoken', require('./routes/refreshToken.route'));
 app.use('/logout', require('./routes/logout.route'));
+app.use('/u/get-user', require('./routes/get.user.route'));
 app.use(verifyJWT);
-
 app.use('/follow', require('./routes/user/follow.route'));
 app.use('/add-post', require('./routes/post/add.post.route'));
 app.use('/add-comment', require('./routes/comment/post.comment'));

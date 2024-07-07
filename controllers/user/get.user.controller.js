@@ -10,28 +10,26 @@ const handleGetUser = async (req, res) => {
                 username: true,
                 email: true, 
                 createdAt: true,
+                password: false,
                 posts: {
                     select: {
                         id: true,
-                        author: true,
                         title: true,
+                        createdAt: true,
                         category: true,
                         votes: true,
-                        createdAt: true,
                         comments: true,
                     }, 
                     orderBy : {
                         createdAt: 'desc',
                     }
                 },
-                comments: true,
                 following: true,
                 followers: {
                     select: {
                         id: true,
                     }
                 },
-                votes: true,
             },
         });
 
