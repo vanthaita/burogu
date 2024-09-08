@@ -1,7 +1,7 @@
 # Backend cho Burogu
 
 ## Tổng Quan
-Backend cho burogu.dev (blog app). Dịch vụ này được xây dựng bằng.
+Backend cho burogu.dev (blog app).
 
 ## Cấu Trúc Dự Án
 Các thư mục và tệp chính trong dự án như sau:
