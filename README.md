@@ -1,7 +1,7 @@
 # Backend cho Burogu
 
 ## Tổng Quan
-Kho lưu trữ burogu chứa dịch vụ backend cho burogu.dev (blog app). Dịch vụ này được xây dựng bằng Node.js(ExpressJs) và các công nghệ khác nhau để xử lý logic backend, bao gồm tương tác cơ sở dữ liệu, chức năng middleware và các route API.
+Backend cho burogu.dev (blog app).
 
 ## Cấu Trúc Dự Án
 Các thư mục và tệp chính trong dự án như sau:
