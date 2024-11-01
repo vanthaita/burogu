@@ -1,3 +1,4 @@
+
 # Backend cho Burogu
 
 ## Tổng Quan
@@ -48,3 +49,52 @@ npx prisma migrate dev
 npm start
 ```
 
+## 日本語の説明
+
+### プロジェクトの概要
+このプロジェクトは、burogu.dev（ブログアプリ）のバックエンドです。
+
+### プロジェクト構造
+プロジェクト内の主なフォルダーとファイルは次のとおりです：
+
+- **config/**: アプリケーションの設定ファイル（例：CORS）を含みます。
+- **controllers/**: リクエストとレスポンスを処理するロジックを定義するコントローラーを含みます。
+- **lib/**: ユーティリティ関数とヘルパーを提供するライブラリファイルを含みます（例：db）。
+- **middlewares/**: コントローラーに到達する前にリクエストを処理するミドルウェア関数を含みます。
+- **prisma/**: データベースとやり取りするためのPrisma ORMの設定とスキーマファイルを含みます。
+- **routes/**: APIのルートを定義し、対応するコントローラー関数にリンクします。
+- **.gitignore**: Gitが無視するファイルとフォルダーを指定します。
+- **package.json**: プロジェクトの依存関係とスクリプトをリストします。
+- **server.js**: サーバーを設定します。
+
+### データベーススキーマ
+![データベーススキーマ](https://github.com/TaThasi/burogu/assets/120630656/9c4766db-d5fc-4d6a-b0f2-188410351c4a)
+
+### インストール手順
+
+#### リポジトリをクローンする：
+```sh
+git clone https://github.com/TaThasi/burogu.git
+cd burogu
+```
+#### 依存関係をインストールする：
+```sh
+npm install
+```
+#### 環境変数を設定する
+```sh
+ACCESS_TOKEN_SECRET=
+REFRESH_TOKEN_SECRET=
+PORT=
+CLIENT_URL=""
+DATABASE_URL=""
+DIRECT_URL="p"
+```
+#### データベースマイグレーションを実行する：
+```sh
+npx prisma migrate dev
+```
+#### サーバーを起動する：
+```sh
+npm start
+```
